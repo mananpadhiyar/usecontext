@@ -1,0 +1,99 @@
+React’s useContext hook makes it easy to pass data throughout your app without manually
+ passing props down the tree.
+
+
+here in useContext folder we have created 3 components A , B , C 
+
+
+components A i am rendering in main file that is app.js 
+
+inside components A => imported  Com B 
+       Com B =>  imported ComC
+
+inside Com c => write code => <h1>Hell from components C </h1>
+
+
+NOW , let take an example that 
+  return <ComB name={"manan"} />;
+
+from ComA => using ComB => there passing name property
+
+that property i want to acess in comC
+
+const ComC = ({ name }) => {
+  return (
+    <div>
+      <h1>Hell from components C {name}</h1>
+    </div>
+  );
+
+};
+
+# it will not goona show that property name 
+
+the sceniro is here i want to pass from ComA to ComC but using props we can't do that
+in order to pass that props we need to pass whichever componets we have from ComA ..... ComC
+
+so here we have comB so we need to pass prop to ComB 
+app => comA => comB => comC
+
+here we have only one that we need to pass prop in order to get props in comC 
+if we have to so many componets from comA ....... comX 
+so we need to pass each of componets props in order to get props in comX 
+
+THIS PROBLEM KNOWS AS PROPS DRILLING
+
+here why useContext is useFul for that 
+
+React’s useContext hook makes it easy to pass data throughout your app without manually
+ passing props down the tree.
+
+NOW so what is diffrence between contextAPI vs useContext hook ?
+
+in contextAPI 
+first we need to create 
+#1 context
+#2 provider => who provide data 
+#3 consumer => by we can get data
+
+the problem in contextApi is consumer part is too lengthy(very long)
+
+for that consumer part solution we have useContext hooks 
+
+we can use useContext inside of consumer 
+
+so NOW , with the use of useContext hook
+#1 context
+#2 provider => who provide data 
+#3 UseContext Hook => by we can get data
+
+
+so we use here ContextApi and useContext Hook also.
+
+#1 create Context :
+
+import React, { createContext } from "react";
+
+const BioData = createContext();
+
+#2 provider 
+
+const ComA = () => {
+  return (
+    <BioData.Provider value={"manan sinh"}>
+      <ComB />;
+    </BioData.Provider>
+  );
+};
+
+export { BioData };
+
+#3 useContext hook
+ here i want to pass "manan sinh" to direct comA to comC
+
+Now REMBEBER : here BioData is component now so we need to import that in comC in order to use 
+import { BioData } from "./ComA";
+
+  const context = useContext(BioData);
+
+      <h1>Hell from components C {context}</h1>

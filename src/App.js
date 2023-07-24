@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import LifeCycle from "./components/LifeCycle";
+import MergeUseState from "./components/MergeUseState";
+import Unmouting from "./components/Unmouting";
+import UpdateArrayState from "./components/UpdateArrayState";
+import Task1 from "./components/Task1";
+import ComA from "./useContext/ComA";
+import Chart from "./components/Chart";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="all">
+      <Routes>
+        <Route path="/shallowmerge" element={<MergeUseState />} />
+        <Route path="/" element={<LifeCycle />} />
+        <Route path="/" element={<Unmouting />} />
+        <Route path="/updatearrayinstate" element={<UpdateArrayState />} />
+        <Route path="/task1" element={<Task1 />} />
+        <Route path="/comA" element={<ComA />} />
+        <Route path="/chart" element={<Chart />} />
+      </Routes>
     </div>
   );
 }
