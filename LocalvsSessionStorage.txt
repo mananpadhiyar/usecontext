@@ -1,0 +1,159 @@
+
+=> localStorage is web storage object 
+=> its store data without any expiry date 
+=> its means data still available even page reload and browser restart.
+
+retrive => means to get something back from the place where it was left or lost
+
+=> local storage enable developers to store and retrive data in the browser
+
+critical => means saying what is wrong with somebody/something
+
+=> It is critical to understand, though, that using localStorage as a database for your 
+project is not a good practice, since data will be lost when the user clears the cache, 
+among other things.
+
+=> Developers frequently use localStorage for adding a dark mode feature to an application,
+saving a to-do item, or persisting a user's form input values, among many other scenarios.
+
+We will need two hooks in order to use localStorage with react hooks:
+
+useState() – The state of your application is guaranteed to change at some time. The 
+useState hook is a function that accepts one parameter, the initial state (which
+ might be the value of a variable, an object, or any other sort of data in your 
+ component), and returns two values: the current state and a function that can 
+ be used to update the state.
+
+useEffect() – The Effect Hook is activated by default after the first render and each 
+time the state is changed. As the names suggest, it is used to perform an effect each
+time the state changes. This hook is great for configuring listeners, retrieving data
+from the API, and deleting listeners before the component is removed from the DOM.
+
+localStorage provides us with access to a browser's storage object, which includes
+three methods:
+
+setItem(): This method is used to add a key and a value to localStorage.
+
+getItem(): This method is used to get an item from localStorage using the key.
+
+removeItem(): This technique is used to delete an item from localStorage based on its key.
+
+ # How to Use the setItem() Method
+
+By giving values to a key, this technique is used to store objects in localStorage. 
+This value can be of any datatype, including text, integer, object, array, and 
+so on.
+
+vital(whyetal) means => very important 
+
+It is vital to remember that in order to store data in localStorage, you must first
+stringify it with the JSON.stringify() function.
+
+IMP : [  A common use of JSON is to exchange data to/from a web server.
+         When sending data to a web server, the data has to be a string.
+         Convert a JavaScript object into a string with JSON.stringify().]
+
+const [items, setItems] = useState([]);
+
+useEffect(() => {
+  localStorage.setItem('items', JSON.stringify(items));
+}, [items]);
+
+
+IMP : very actual store the data means their we get data , we have store in
+arrayof object [{}] like below it could be any datatype just for example
+
+let [storeContact, setStoreContact] = useState([]);
+
+useEffect(() => {
+  localStorage.setItem('contacts', JSON.stringify(storeContact));
+}, [storeContact]);
+
+=> when storeContact state change(update) here then it will reRender components and 
+   store data in localStorage
+
+=> here 'contacts' is keys of storage name 
+=> and as second paramater we need to converts into string and store the data (storeContact) 
+
+
+ # How to Use the getItem() Method
+=> This method retrieves objects from localStorage.we will use the useEffect()
+ hook because it is the best one.
+
+ The useEffect() hook helps us fetch all items on first render, which means that when the
+ component mounts or re-renders, it obtains all of our data from localStorage.
+
+ Note that this is why we passed in an empty second argument.
+
+ useEffect(() => {
+   let retriveContact = JSON.parse(localStorage.getItem("contactList"));
+    if (retriveContact) {
+      setStoreContact(retriveContact);
+    }
+}, []);
+
+=> this [] array is works as onLoad
+
+JSON.parse => It is important to remember that when we stored the data, we first converted 
+it to a JSON string. This means that in order for us to now make use of it, we need to 
+convert JSON string back to a JSON object. We do this with the JSON.parse() method.
+
+=> here why we use if() condition if there data if there is retrieves data is there it 
+will check the set it to setter function
+
+NOTE : IMP => sometime it will not works cause The value you set when calling retriveContact 
+does get stored in localStorage when the first useEffect runs (as expected). The problem 
+is that, when you reload the page, that same useEffect is overwriting what's in 
+localStorage because the state is reset to an empty array ([]). This triggers 
+the useEffect with contacts equals to [], and stores that in localStorage
+
+for slove this problem you can do that,
+
+ useEffect(() => {
+    if (storeContact.length > 0) {
+      localStorage.setItem("contactList", JSON.stringify(storeContact));
+    }
+  }, [storeContact]);
+
+
+=> This prevents the initial state of storeContact to be stored in localStorage when the page 
+   gets first loaded.
+
+=> firstly you saw that what we using this below one right 
+
+  localStorage.setItem('contacts', JSON.stringify(storeContact));
+
+and now we are using this one 
+ if (storeContact.length > 0) {
+      localStorage.setItem("contactList", JSON.stringify(storeContact));
+    }
+
+=> this condition say that the length of storeContact is greather 0 then only store in local
+storage when we add data then it will have length of greather than 0 =>
+so when second useState run that we are storing any empty array [] to get data
+it will not triggers the useEffect with contacts equals to [] cause of we use condition 
+that only store data greather length of 0 it will remain to store that data
+
+
+initial means at begining 
+
+The first useEffect will trigger before the second one, which updates localStorage with 
+the initial state value. Which means by the time the second useEffect triggers 
+localStorage.getItem("contactList") will return the empty array too. that's the problem.
+
+final output :
+
+// getting back data from localStorage (onload of page)
+useEffect(() => {
+    let retriveContact = JSON.parse(localStorage.getItem("contactList"));
+    if (retriveContact) {
+      setStoreContact(retriveContact);
+    }
+  }, []);
+
+  // add data in localstorage (on update of storeContact)
+  useEffect(() => {
+    if (storeContact.length > 0) {
+      localStorage.setItem("contactList", JSON.stringify(storeContact));
+    }
+  }, [storeContact]);

@@ -1,0 +1,886 @@
+immutable means => unable to be changed.
+
+mutable means => liable to change.
+
+Initial value of a variable : is the value assigned to the variable by default or by the user
+
+1. what is react ? explain the major feature?
+
+=> React (also known as React.js or ReactJS) is a free and open-source front-end JavaScript 
+   library for building user interfaces based on components
+
+=> React is a JavaScript library created by Facebook
+
+=> React is a User Interface (UI) library
+
+=> React is a tool for building UI components that can be resuseable
+
+
+=> aims to allow developers to create fast user interfaces for websites and applications 
+alike easily. The main concept of React. js is virtual DOM instead of real dom considering 
+that Real dom minuplation is very Expensive means the virtual dom minuplation is much easy 
+then real dom
+
+virtual dom feature
+=> It updates fast
+
+
+2. What is JSX?
+
+JSX stands for JavaScript syntax extension.
+
+JSX is an XML/HTML like extension to JavaScript.
+
+XML - Extensible Markup Language
+
+JSX allows us to write HTML in React. JSX makes it easier to write
+and add HTML in React.
+
+JSX is comibination of HTML and JavaScript
+
+
+3. what is the React DOM Render ?
+=> The method ReactDom.render() is used to render (display) HTML elements:
+
+
+4. what is JSX Expressions ?
+=> Expressions can be used in JSX by wrapping them in curly {} braces
+
+let name = "manan"
+
+return <>
+   <h1>Hello {name}</h1>
+      </>
+
+
+IMP: 
+=> React applications are usually built around a single HTML element.
+
+React developers often call this the root node (root element):
+<div id="root"></div>
+
+
+5. what is React Components ?
+=> React components are JavaScript functions.
+
+=> Components come in two types, Class components and Function components
+
+=> components is contain peice of code that can be reuse
+
+=> They serve the same purpose as JavaScript functions
+   but in react component we return jsx that makes more powerful.
+
+=> that can be use for reuseablilty.
+
+=> components are use for reuseablilty
+
+
+6. what is fronend and backend development ?
+
+=> Front-end development focuses on the visual aspects of a website — the part that users 
+   see and interact with.
+
+=> the back-end is the code that runs on the server, that receives requests from the clients,
+   and contains the logic to send the proper data back to the client. The back-end also 
+   includes the database, which is used for store all of the data for the application.
+
+comprise => means => to consist of; to have as parts 
+
+=> The front end is what users see and interact with and the backend is how everything works.
+
+
+7. What is the difference between state and props ?
+
+# first of all understand what is state in react :
+
+The state is a built-in React object that is used to contain data or information about the 
+component. A component's state can change over time; whenever it changes, the component 
+re-renders
+
+example : let [info , setInfo] = useState("storing data")
+
+State holds information about the components.
+
+# then let's understand what props is :
+
+Props are used to pass data
+
+Props allow you to pass data from one component to other components as an argument
+
+by using props we can pass the data from parent to child component
+
+Basically, these props components are read-only components
+
+In order to pass a prop to a component all we have to do is create name of the prop and 
+assign to some value.
+
+Props allow you to pass data from one component to other components as an argument while
+State holds information about the components.
+
+
+8. Why should we not update the state directly?
+ 
+=> Updating the state directly means it will not be dynamic. Dynamically updated state will 
+   automatically re-render the component whenever any changes are made  
+
+=> if the state is updated directly, the component will not rerender , state is use for
+   that rerendering.
+   component's state can change over time; whenever it changes, the component 
+   re-renders
+
+#IMP --> Can we update state without setState?
+
+ => if we update state with plain JavaScript and not setState(setter), it will not trigger
+    a re-render and React will not display those (invalid) changes in state to our user.
+    This is a simple, but crucial lesson to remember
+
+9. How to pass a parameter to an event handler or callback?
+
+=> If you want to pass a parameter to the click event handler you need to make use of the 
+   arrow function. If you pass the argument directly the onClick function would be
+   called automatically even before pressing the button.
+
+<button onClick={handleAlert()} =>  will call the function then assign value to onclick
+
+we are calling handleAlert right away
+
+to avoid that,
+
+<button onClick={handleAlert} => 
+
+it will Evaluate the handleAlert function and assign the result to onclick
+
+or we can use anonymous function 
+
+<button onClick={() => {
+  alert("hello world")
+}} 
+
+Event Handlers: Events are the signals sent when there is a change in the UI. Users may click
+hover drag the mouse or press any key to perform these events. To respond to these changes 
+users can write event handler code. You need to keep these 2 points in mind while working 
+with React events.
+
+React events are named in the format of camelCase (onChange instead of onchange).
+React event handlers are placed inside curly braces (onChange={handleSubmit} 
+instead of onChange=”handleSubmit”).
+
+
+10. What is the benefit of using "key" prop in arrays of elements?
+
+=> Key prop helps React to identify the items that have changed, added ,or removed .
+Generally ID is used as a key from our data:
+
+const todoItems = todos.map((todo) =>
+<li key={todo.id}>
+{todo.text}
+</li>
+)
+
+11. what is DOM ? virtual DOM vs Real DOM ?
+
+=> document - HTML Document
+   object  - element like h1, head , body
+   model - complete document(all object)
+
+  DOM stands for document object model
+
+now by document we can access html element and modify as per our requirement
+
+virtual DOM is lighweight copy of original dom 
+
+virtual DOM has same property as real DOM object.
+
+virtual DOM directly not change property in real DOM 
+
+IMP:
+[ Whenever there is a change in any data of virtual DOM, the entire UI is re-rendered in 
+Virtual DOM representation
+
+Then the difference between the updated DOM representation and the previous one is 
+calculated.
+
+Once the calculations are done, the real DOM will be updated with only the things that 
+have changed.]
+
+=> https://dev.to/swarnaliroy94/introduction-to-react-real-dom-virtual-dom-363
+
+once we made all element changed by virtual dom or i can say once updated element that required
+then finally whatever we made change then it will final automatically goes in real dom 
+
+check diagram for that in google
+
+12. What are the different phases of component lifecycle?
+
+In component lifecycle
+when we need to add(onLoad), update , minuplate the dom without lifecycle we can't do that.
+
+In function component with the help of hooks we can do that component lifecycle
+
+Lifecycle of Components
+Each component in React has a lifecycle which you can manipulate 
+during its three main phases.
+
+The three phases are: Mounting, Updating, and Unmounting.
+
+Mounting - birth of your component
+Updating - growth of your component
+Unmounting - death of your component
+
+Mounting - first time called on load
+Updating - when state changes
+Unmounting - remove something
+
+Mounting => we want to something onLoad 
+let'say i want data from an api on load page
+
+
+we can do this stuff in using useEffect hooks
+
+useEffect(() => {
+ 
+ // call this api here
+     console.log("This only happens ONCE. It happens AFTER the initial render : OnMOunting.");
+
+
+},[])
+
+
+updating => if anything is changing like input field value etc.. updating dom , props ,state
+then this we run 
+
+  useEffect(() => {
+    console.log("This only happens ONCE. It happens AFTER the initial render.");
+   
+  }, [counter]);
+
+=> whenever counter is update then this console.log() called again again as per counter how
+   many time counter updated
+
+Unmounting => when inside of component something deleted , destroyed
+
+
+ useEffect(() => {
+    console.log("This only happens ONCE. It happens AFTER the initial render.");
+    return () => {
+      console.log(
+        "This only happens ONCE. Anything in here is fired on component : UNMOUNT."
+      );
+    };
+  }, [counter]);
+
+
+whatever we wrote after return () =>{} this goona run on delete , fired something on component
+
+let say i delete the btn element then it will so that message that we have written in useEffect
+after return () => {}
+
+Mounting means putting elements into the DOM.
+
+
+13. How can you set state with a dynamic key name?
+
+=> If JSX code is transformed by ES6 or babel transpiler, then it can be easily achieved by
+computed property names. For example
+handleInputChange(event) {
+const {id, value} = event.target;
+setState({ [id] : value })
+}
+
+
+14. can browser understand jsx ?
+
+=> no , JSX code is transformed by babel transpiler
+
+Babel-transpiler converts the syntax of modern JavaScript into a form, which 
+can be easily understood by older browsers.
+
+
+15. Why className is used over class attribute in React?
+
+=>  the class is a reserved keyword in JavaScript
+
+=> since we use JSX in React which itself is the extension of JavaScript, 
+   so we have to use className instead of class attribute.
+
+
+16. What are stateless components?
+
+=> A stateless is function component is a typical React component that is defined as a 
+function that does not manage any state. There are no constructors needed, no 
+classes to initialize, and no lifecycle methods to worry about. These functions 
+simply take props as an input() and return JSX as an output.
+
+=> functions component are stateless components
+
+=> sir told Stateless functional components can be rendered faster. One of the reasons 
+why this is the case is because stateless functional components do not require some 
+of the life cycle methods.
+
+ They are easy to write
+ They are easy to understand
+ They are easy to test
+ They are a little faster than classes
+ You can avoid this keyword altogether
+
+17. What are stateful components?
+
+=> If the component’s behaviour is dependent on the state of the component, then it can be 
+called as stateful component. These components are always classes because their 
+state gets initialized in the constructor. For example
+
+class App extends Component {
+constructor(props) {
+super(props)
+this.state = { count: 0 }
+}
+render() {
+// ... }
+}
+
+
+18. How do you conditionally render components?
+
+=> In some cases, you have to render different components depending on some state. You 
+can use conditional short-circuiting to render a part of your component only if 
+a certain condition is true because JSX does not render false or undefined
+
+const MyComponent = ({ name, address }) => (
+  <div>
+<h2>{name}</h2>
+{address
+? <p>{address}</p>
+: <p>{'Address is not available'}</p>
+}
+</div>
+)
+
+getting name and adress by props  if there adress  ? print adress  : otherWise
+
+we can use ternary operator to do conditionally render components
+
+
+19. Is it possible to re-render a component without calling setState?
+
+=> if we update state with plain JavaScript and not setState , it will not trigger a 
+re-render and React will not display those (invalid) changes in state to our user. 
+
+🎉 You can now, using React hooks
+Using react hooks, you can now call useState() in your function component.
+
+A great advantage of the useState hook is that we are able to call it as many times as 
+we like to use as many state variables as we need.
+
+useState() will return an array of 2 things:
+
+A value, representing the current state.
+Its setter. Use it to update the value.
+IMP : Updating the value by its setter will force your function component to re-render,
+
+20. What is React Router?
+
+=> react Router is a JavaScript framework that lets us handle client and server-side 
+routing in React applications. It enables the creation of single-page web or mobile 
+apps that allow navigating without refreshing the page. 
+
+
+21. what browser router do in react ?
+
+=> enables the navigation among views of various components in a React Application, allows
+   changing the browser URL
+
+
+22. what is query in js ?
+ 
+=> A query string is used to assign a specific value to the parameter. 
+For example: https://example. com? name=Shubham&age=22.
+
+
+23. how SPA single page application works in react ?
+
+ => If you use react you have to install its dependency first.
+
+If you are using create-react-app YourReactProject command you will notice there is 
+only one html generated at YourReactProject/public/index.html which has only one 
+div with id = root and your index.js at YourReactProject/src/index.js uses this 
+div as the parent node for the react by this line of code.
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+So whenever you click some url the root div will remain in the page but the new page 
+content will become root node's children. So technically you have only one div 
+id=root but its children gets replaced. Hope you got the answer.
+
+IMP: conclusion => IN index.html => we have only one div with id="root"  
+                => in that "root" goona run all code  
+               
+                => Now, you notice in index.js we are rendering the app.js
+                => what is inside app.js
+                => inside app.js we are having all components 
+                => here you can see every components having routes 
+                => as per route => it will show the data 
+                => so when we click on some url => that div with root id 
+                => will add content as we have set route of components 
+                => also allow to use navigate to do navigate one page to another without
+                   refreshing the page
+                => only content will replace in that div. 
+                => so this is how we achieve single page application 
+                => cause in react there no any other html file 
+                => we have here only one html file with div id="root" here 
+                   our all coder runs
+               
+                
+24. what is difference between library and framework ?
+ 
+ framework that i have used till now is => bootstrap framework of css
+                                        => express framework of Node js
+
+(school) 
+framework : the flow already defined how everything goonna works.
+            control is not in hand of developers
+        
+           there are preDefined things like we get in framework 
+           like this class for function run the only run after particular state
+           we can't change them. where class or function are going use where we need
+           call api everything is preDefined 
+
+1. more number of rules
+
+if i talk about library,
+           
+    libray that use till now is React js. there no preDefined thing.
+
+           : control of flow how everything going to works in hands of developers
+           we can call any function or class as per our requirement , there no fix 
+           thing. i can run as per our requirement 
+ 
+1. less number of rules (build by you)
+2. collection code (some function , dom being pack to together)
+
+ => https://www.baeldung.com/wp-content/ql-cache/quicklatex.com-0be15fc7778909b68b7d7feb5a0c49cd_l3.svg
+
+
+25. can we change directly to setter state to update like setter("onclick directly use") ?
+
+=> in plain js we first acess event then callback function run wheaver we wrote logic inside
+ it. callback function are asynchronus in natural . so once we click then only callback
+ run. here also the same sinerio once CLick on click event then only we need to run 
+ method think like that.
+ 
+=> callback function is asynchronus in nature , means whenever event will trigger then
+   only it will run cause we are callback function
+
+if you see typeof setter in useState it's actually is function
+we are using inside function method that actually works as callback function 
+callback function means passing function as argument to the another function
+and this callback function asynchronus in nature
+
+let [ message  , SetMessage] = useState("hello wrold")
+
+  console.log(typeof state);  // this could be array , string , number ... whatever we wrote
+  console.log(typeof setter);  // function
+
+  console.log(typeof message);  // string
+  console.log(typeof SetMessage);  // function
+
+
+
+26. what is props(property) in react ?
+
+Props stand for "Properties." They are read-only components. It is an object which stores
+the value of attributes of a tag and work similar to the HTML attributes.
+
+
+27. how merge object in useState() ?
+
+ let see example,
+
+     const [userInfo, setUserInfo] = useState({
+         name: "manan",
+         age: 20,
+         passion: "can't tell anyone"
+     });
+
+  const updatedUserInfo = () => {
+    setUserInfo({
+      ...userInfo,
+      age: 26
+    });
+  };
+
+  return <>
+      <p>
+        {userInfo.name} , {userInfo.age} , {userInfo.passion}
+      </p>
+
+      <button onClick={updatedUserInfo}> see updated one </button>
+    </>
+
+
+=> In order to prevent this behaviour, you need to use a second form of setState() that 
+accepts a function rather than an object. That function will receive the previous state as 
+the first argument, and the props at the time the update is applied as the second argument:
+
+28. what is useState hooks ?
+
+=> useState is React Hook that allows you to add state to a functional component. It returns
+ an array with two values: the current state and a function to update it. The Hook takes an 
+ initial state value as an argument and returns an updated state value whenever the setter 
+ function is called. It can be used like this:
+
+const [state, setState] = useState(initialValue);
+
+Here, the initialValue is the value you want to start with, and state is the current state
+value that can be used in your component. The setState function can be used to update the
+state, triggering a re-render of your component.
+
+advantage of using useState hooks :
+
+In React, useState can store any type of value, whereas the state in a class component 
+is limited to being an object. This includes primitive data types like string, number,
+ and Boolean, as well as complex data types such as array, object, and function. 
+ It can even cover custom data types like class instances.
+
+Basically, anything that can be stored in a JavaScript variable can be stored in a 
+state managed by useState.
+
+IMP : how to Update objects and arrays in useState ?
+ > Never directly modify an object or array stored in useState. Instead, you should 
+create a new updated version of the object or array and call setState with the 
+new version. For example:
+
+// Objects
+const [state, setState] = useState({ name: 'John', age: 30 });
+
+const updateName =  () => {
+  setState({ ...state, name: 'Jane' });
+};
+
+
+29. How to dynamically update the value for any input field with one event handler 
+    function, using hooks 
+ 
+Understanding {[name]: value} 
+
+    setUserInfo({
+      ...userInfo, // prev value getting over here
+      [name]: value,
+    })
+
+# How we getting as per name unique input value and changing that particular input ?
+
+=> In Javascript, when you create an object literal {} and you wrap the object’s key in array 
+   brackets [key] you can dynamically set that key.
+
+best article : https://medium.com/@bretdoucette/understanding-this-setstate-name-value-a5ef7b4ea2b4
+
+  [name]: value,
+
+=> Because we getting previous value from object and now know the name of the input field
+ and the value associated with it, we can dynamically set the state with one simple line.
+
+conclusion : setState({ [name]: value} ) is powerful because it allows you handle your
+ input field change events in one simple line, instead of having to write out a 
+ bunch of handleChange functions for each different input field.
+
+
+30. what is hooks in react ?
+
+=> hooks are function that allow us to use useState and other features in function components.
+=> hooks provide way to manage components state , other life cycle methods in functions
+=> hooks always defined in function components
+=> can we use hooks in loop? => map in react? --> No, we need to use only on top level 
+   of components
+
+
+31. what map function do in react ?
+
+> iterate ==> doing again and again (repeat)
+
+ => The map() function is used to iterate over an array and manipulate or change data items. 
+In React, the map() function is most commonly used for rendering a list of data to the DOM.
+
+Usage in React : 
+
+Consider an array of objects that contains user id and name. To display it to the DOM, 
+you need to use the map() function and return JSX from the callback function. This is 
+the most common use case of the map() function in React.
+
+const Users = () => {
+  const data = [
+    { id: 1, name: "John Doe" },
+    { id: 2, name: "Victor Wayne" },
+    { id: 3, name: "Jane Doe" },
+  ];
+
+  return (
+    <div className="users">
+      {data.map((user) => (
+        <div className="user">{user}</div>
+      ))}
+    </div>
+  );
+};
+
+conclusion :
+
+Using the map() function, you can pretty much do all sorts of manipulations without mutating
+(without change in original array) the original array. The non-mutation part is essential, 
+as it does not cause any side effects by default and makes it easy to debug your code. 
+If you want to mutate the original array(want to change in original array), you can 
+use the traditional for or any other type of loop, or you can use the 
+forEach() function.
+
+
+32. How to Use localStorage with React Hooks to Set and Get Items ?
+
+ANS -> go to the => LocalvsSessionStorage.txt
+
+33. What are the differences between NavLink, Link, and "a" in React?
+
+#What are links?
+Links are also known as hyperlinks. They are references to data that the user can follow 
+by clicking or tapping.  When links are clicked, they take you to the resource 
+you requested.
+
+Types of links in React applications :
+In ReactJS, there are three different kinds of links. These are NavLink, Link, and (a) links, 
+and they all serve different purposes.
+
+NavLink: This is used when you want to highlight the current or active link. This is 
+used with the activeClassName attribute, which enables it. See the example below.
+
+<NavLink to="/home" activeClassName="active" >Home</NavLink><br/>
+
+The CSS can then be styled according to your choice inside the App.css file. Let’s make 
+the text color red to make it simple.
+
+.active{
+  color:red;
+}
+Link: This is used when there is no special style or highlighting of your link. See the
+example below.
+
+<Link to="/not-active">Not Active </Link><br/>
+
+Note: Use the NavLink or Link when you need links that are routing to pages that belong to
+your application. For external links, a is preferrable.
+
+The anchor tag a: This is used for links outside your webpage.
+See the example below.
+
+<a href="https://www.educative.io/edpresso">Visit Edpresso </a>
+
+Conclusion :
+The NavLink is used when you want to highlight a link as active. So, on every routing to 
+a page, the link is highlighted according to the activeClassName. Link is for links that
+ need no highlighting. And a is for external links.
+
+
+
+34. difference between Link vs useNavigate ?
+
+<Link to="page">Page</Link>
+
+It only specifies the target it wants to get to, but doesn't explain how to get there.
+
+With the navigate function you are explicitly issuing a command to navigate now,
+immediately. This is an imperative action.
+
+In order to use useNavigate you need to use instance of navigate
+
+let navigate = useNavigate()
+
+Example imperative link:
+
+<Link
+  to="page"
+  onClick={(e) => {
+    e.preventDefault();
+    navigate("page");
+  }}
+>
+  Page
+</Link>
+
+This version explicitly explains that if clicked on run this specific logic to navigate to 
+this page.
+
+Note also that Link is a React component and as such it must be rendered into the DOM as part
+of the return from a React component, whereas the navigate function is a function and can be 
+used in callbacks.
+
+Conclusion : so here the scenarios navLink vs useNavigate
+
+when we want to navigate one page to another with conditional logic 
+
+if(user === login){
+  navigate("/login")
+
+}else{
+
+  navigate("/home")
+}
+
+here only we can use useNavigate for that.
+
+<Link to="page">Page</Link>
+
+It only specifies the target it wants to get to, but doesn't explain how to get there.
+
+THAT IT.
+
+
+35. how to pass argument(parameter) to event handler ?
+
+# You usually do:
+
+<button onClick={handleClick}>Delete</button>
+
+=> But what if you’re going to have to pass a parameter? Say you have a list of ids, and you 
+   want to remove one by clicking on the “Delete” next to it.
+
+#You can’t do:
+
+<button onClick={handleClick(id)}>Delete</button>
+
+PROBLEM : Because the expression inside onClick will be performed on the button. This will
+ delete all the ids in the list as soon as the app starts. 
+
+This is what you need to do:
+
+const handleClick = (id) => {
+     let newContactsList = storeContact.filter((contact, index) => {
+      return index !== id;
+    });
+}
+
+<button onClick={() => handleClick(id)}>Delete</button>
+
+why need to use another anonymous function for that ()=> handleClick(id) but why?
+
+=> cause if we use directly onClick={handleClick(id)}  
+   you notice you technically calling function over here without click it will delete 
+   all the contact as soon as react app start 
+
+   #so using anonymus fuction solve this problem 
+
+    onClick={() => handleClick(id)}
+   
+   here it will only run this handleClick(id) when we click on button 
+   
+
+NOW , what if i want to get event also from
+
+<button onClick={(e) => handleClick(id , e)}>Delete</button>
+
+so we need to get event from first function not second that we run on only after 
+clicked so here that first anonymous function we can get event and you can use e 
+as second parameter
+
+
+36. how to delete the data from list onClick ?
+
+  const deleteHandler = (id) => {
+    let newContactsList = storeContact.filter((contact, index) => {
+      return index !== id;
+    });
+
+    setStoreContact(newContactsList);
+  };
+
+     {storeContact.map((contact, index) => {
+
+  <button onClick={() => deleteHandler(index)}
+    className="trash alternate outline icon"></button>
+
+     })}
+
+if filter index is not match to map index the simply return that list 
+
+so here if filter index and map index matched then it will not show here (deleted)
+
+that list we are again updating in setter function
+
+37. What is programmatically navigation ?
+
+=> when some event will trigger , router will happened that what the navigation
+
+this how you can use : 
+
+let {useNavigate} from 'react-router-dom'
+
+const navigate = useNavigate()
+
+
+<button onClick={() => navigate("/home")}> go to the home page </button>
+
+
+38. How to pass state or data in react-router ?
+
+Pass data one component another component with react-router (v6) Link Component.
+and we can also able to pass by using useNavigate
+
+# Step: 1 => Component where the <Link /> is
+
+<Link to={'/page1'} state={{ state: 'mystate' }} >Page 1</Link>
+
+state is a property that's part of the object you can provide to the to prop of the <Link>
+component.
+
+ by state we can pass It's a piece of information that you'd like to send to the next page
+ which page where you use router . here /page1 this router we are passing this data 
+
+ how we can access that state data => /page1 route component ?
+
+# Step 2 : Component where you want to get the state
+
+import { useLocation } from 'react-router-dom';
+
+const location = useLocation()  
+
+console.log(location)
+
+const {state } = location 
+
+NOW in this state you have acess of dynamic data 
+
+IT IS VERY USEFUL when we want after login what user add data in to input field by Using
+this we can get data easily 
+
+Example of using  useNavigate() we can also get state by using that .
+
+<button onClick={() => 
+navigate(`/user/${id}` , { state : {name : "manan"}})} > 
+go to user profile </button>
+
+<Link to={'/page1'} state={{ state: 'mystate' }} >Page 1</Link>
+
+then by useLocation => location(instace) =>  state => get data from
+
+
+39. what is the property in object Javascript?
+
+=> Properties are the values associated with a JavaScript object.
+
+=> A JavaScript object is a collection of unordered properties.
+
+=> Properties can usually be changed, added, and deleted, but some are read only.
+
+Example : 
+
+let person = {
+   name : "manan",
+   age  : 21
+}
+
+objectName.property      // person.age
+
+here the age is property
+
+
+40. Difference between NPM vs NPX ?
+
+ => NPM is a package manager used to install, delete, and update Javascript packages on your
+    machine. NPX is a package executer, and it is used to execute javascript packages 
+    directly, without installing them.
